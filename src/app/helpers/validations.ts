@@ -1,5 +1,5 @@
 import { FormGroup, FormControl } from "@angular/forms";
-// Form Validation 
+// Form Validation Check 2
 export default class Validation{
     static  validateAllFromFields(formGroup:FormGroup)
     {
