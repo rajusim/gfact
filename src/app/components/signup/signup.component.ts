@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { faFacebookF, faLinkedinIn, faGithub, faTwitter, faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faLock, faUser, faEyeSlash, faEye } from '@fortawesome/free-solid-svg-icons';
+import { faEyeSlash, faEye } from '@fortawesome/free-solid-svg-icons';
 import { RouterLink } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators}  from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import Validation from '../../helpers/validations';
+import { AuthorisationService } from '../../services/authorisation.service';
 
 @Component({
   selector: 'app-signup',
@@ -29,7 +29,7 @@ export class SignupComponent {
     confirmPassword:['',Validators.required]
   })
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder, private auth: AuthorisationService) {}
   
   hideshowPassword()
   {
@@ -45,7 +45,16 @@ export class SignupComponent {
         Validation.validateAllFromFields(this.signUpForm);
       return;
     }
+    this.auth.signUp(this.signUpForm.value)
+    .subscribe({
+      next:(res)=>{
+        alert(res.message)
+        this.signUpForm.reset();
+      },
+      error:(err)=>{
+        alert(err?.error.message);
+      } 
+    })    
     console.log(JSON.stringify(this.signUpForm.value, null, 2));
   }
-  
 }
