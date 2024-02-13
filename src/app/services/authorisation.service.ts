@@ -25,8 +25,12 @@ export class AuthorisationService {
   }
 
   isLoggedIn() : boolean{
-    alert("Loggedin");
-    alert(localStorage.getItem('token'));
-    return !!localStorage.getItem('token')
+    return !!localStorage.getItem('token');
+  }
+
+  signOut()  
+  {
+    localStorage.removeItem('token');
+    localStorage.clear();
   }
 }
