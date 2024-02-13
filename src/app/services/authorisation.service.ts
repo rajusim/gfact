@@ -16,4 +16,17 @@ export class AuthorisationService {
   {
     return this.http.post<any>(`${this.baseUrl}authenticate`,loginObj)
   }
+  storeToken(tokenValue: string){
+    localStorage.setItem('token',tokenValue)
+  }
+  getToken()
+  {
+    return localStorage.getItem('token');
+  }
+
+  isLoggedIn() : boolean{
+    alert("Loggedin");
+    alert(localStorage.getItem('token'));
+    return !!localStorage.getItem('token')
+  }
 }

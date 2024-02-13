@@ -59,6 +59,7 @@ export class SigninComponent {
       next:(res)=>{
         alert(res.message);
         this.signInForm.reset();
+        this.auth.storeToken(res.token);
         this.router.navigate(['dashboard']);
       },
       error:(err)=>{

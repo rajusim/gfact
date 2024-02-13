@@ -6,11 +6,12 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators}  
 import { CommonModule } from '@angular/common';
 import Validation from '../../helpers/validations';
 import { AuthorisationService } from '../../services/authorisation.service';
+import { ModelpopupComponent } from '../popups/modelpopup/modelpopup.component';
 
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [FontAwesomeModule, RouterLink, ReactiveFormsModule, CommonModule],  
+  imports: [FontAwesomeModule, RouterLink, ReactiveFormsModule, CommonModule, ModelpopupComponent],  
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss'
 })
