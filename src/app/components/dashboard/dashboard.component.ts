@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthorisationService } from '../../services/authorisation.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,8 +10,9 @@ import { AuthorisationService } from '../../services/authorisation.service';
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
+  constructor(private auth: AuthorisationService,
+    private router : Router) {}
 
-  constructor(private auth: AuthorisationService) {}
   onSignOut() : void{
     this.auth.signOut();
   }
